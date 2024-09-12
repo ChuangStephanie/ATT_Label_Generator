@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <title>Label Generator</title>
-    <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.5/dist/JsBarcode.all.min.js"></script>    
+    <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.5/dist/JsBarcode.all.min.js"></script>
     <link
       href="https://fonts.googleapis.com/css?family=Libre Barcode 128"
       rel="stylesheet"
@@ -16,33 +16,55 @@
       <div class="header">
         <div class="section1">
           <div class="sku">
-            <p>AT&T SKU: [SKU number]</p>
-            <p class="barcode" style="font-size: 0.5in">SKU</p>
+            <p class="skuNum" >
+              AT&T SKU:
+              <input type="text" id="sku-input" placeholder="SKU number" />
+            </p>
+            <p class="barcode" id="sku" style="font-size: 0.5in">SKU</p>
           </div>
           <div class="order-num">
-            <p>ORDER #: [Order number]</p>
-            <p class="barcode" style="font-size: 0.5in">order num</p>
+            <p class="order" >
+              ORDER #:
+              <input
+                type="text"
+                id="orderNum-input"
+                placeholder="Order number"
+              />
+            </p>
+            <p class="barcode" id="orderNum" style="font-size: 0.5in">order num</p>
           </div>
         </div>
         <div
           class="section2"
           style="display: flex; flex-direction: column; align-items: center"
         >
-          <h1 class="device-model">Device Model #: [Device Model]</h1>
-          <p>SW VERSION:__________________</p>
+          <h1 class="device">Device Model #: <input type="text" id="device-model" placeholder="Device Model" /> </h1>
+          <p class="software" >SW VERSION: <input type="text" id="sw-version" placeholder="software version" /> </p>
         </div>
         <div class="section3">
           <div class="case-qty">
-            <p>CARTON QTY: [Qty]</p>
-            <p class="barcode" style="font-size: 0.25in">qty</p>
+            <p class="carton" >
+              CARTON QTY:
+              <input type="text" id="qty-input" placeholder="Quantity" />
+            </p>
+            <p class="barcode" id="qty" style="font-size: 0.25in">qty</p>
           </div>
           <div class="case-id">
-            <p>CASE ID: [Case ID]</p>
-            <p class="barcode" style="font-size: 0.75in">case-id</p>
+            <p class="case" >
+              CASE ID:
+              <input type="text" id="caseId-input" placeholder="Case ID" />
+            </p>
+            <p class="barcode" id="caseId" style="font-size: 0.75in">case-id</p>
           </div>
         </div>
       </div>
-      <div class="IMEI"></div>
+      <div class="IMEI">
+        <div class="form">
+          <form id="imei-form"></form>
+          <button onclick="submitImeiNums()">Generate Barcodes</button>
+        </div>
+      </div>
+      <div id="error"></div>
     </div>
   </body>
 </html>
