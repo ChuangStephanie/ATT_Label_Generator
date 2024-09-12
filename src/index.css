@@ -50,3 +50,7 @@ svg {
   margin: 0;
   text-align: center;
 }
+
+.pdf-hide {
+  display: none;
+}

@@ -66,6 +66,7 @@ function generateBarcodes(imeiNums) {
   });
 
   updateLabels();
+  generatePdf();
 }
 
 function updateLabels() {
@@ -127,6 +128,28 @@ function hideHeaderInputs() {
     "#sku-input, #orderNum-input, #qty-input, #caseId-input, #device-model, #sw-version"
   );
   headerInputs.forEach((input) => {
-    input.style.display = "none";
+    input.style.display = "hidden";
   });
 }
+
+function generatePdf() {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF({ orientation: 'landscape', unit: 'px', format: [1056, 816] });
+  
+    document.querySelectorAll('#sku-input, #orderNum-input, #qty-input, #caseId-input, #device-model, #sw-version')
+    .forEach(input => input.classList.add('pdf-hide'));
+
+    // Target the main container to convert it to PDF
+    const mainContainer = document.querySelector(".main-container");
+  
+    html2canvas(mainContainer, { scale: 2 }).then((canvas) => {
+      const imgData = canvas.toDataURL('image/png');
+      const imgWidth = 1056; // PDF width in px
+      const imgHeight = canvas.height * imgWidth / canvas.width;
+      
+      // Add image to PDF
+      doc.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
+      
+      doc.save('labels.pdf');
+    });
+  }
