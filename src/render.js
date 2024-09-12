@@ -19,13 +19,15 @@ function submitImeiNums() {
   imeiInputs.forEach((input) => {
     const value = input.value.trim();
 
-    if (value.length !== 15) {
-      isValid = false;
-      errorMessage = "IMEI Numbers need to be 15 characters long";
-    } else {
+    if (value.length === 15) {
       imeiNums.push(value);
     }
   });
+
+  if (imeiNums.length === 0) {
+    errorMessage = "At least one valid IMEI number is required.";
+    isValid = false;
+  }
 
   if (!isValid) {
     document.getElementById("error").textContent = errorMessage;
@@ -121,10 +123,10 @@ function updateLabels() {
 }
 
 function hideHeaderInputs() {
-    const headerInputs = document.querySelectorAll(
-      "#sku-input, #orderNum-input, #qty-input, #caseId-input, #device-model, #sw-version"
-    );
-    headerInputs.forEach(input => {
-      input.style.display = "none";
-    });
-  }
+  const headerInputs = document.querySelectorAll(
+    "#sku-input, #orderNum-input, #qty-input, #caseId-input, #device-model, #sw-version"
+  );
+  headerInputs.forEach((input) => {
+    input.style.display = "none";
+  });
+}
