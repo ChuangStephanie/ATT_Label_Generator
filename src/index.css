@@ -45,8 +45,10 @@ svg {
 }
 
 .barcode {
-  font-family: "Libre Barcode 128";
+  font-family: "Libre Barcode 128", system-ui;
   font-size: 50px;
+  font-weight: 400;
+  font-style: normal;
   margin: 0;
   text-align: center;
 }
