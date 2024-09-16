@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>4 x 6 Label</title>
+    <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.5/dist/JsBarcode.all.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script defer src="4_6.js"></script>
+    <link rel="stylesheet" href="4_6.css" />
+  </head>
+  <body>
+    <div class="main-container">
+      <div class="header">
+        <div class="section1">
+          <div class="sku-div">
+            <p class="skuNum">
+              AT&T SKU:
+              <input type="text" id="sku-input" placeholder="SKU number" />
+            </p>
+            <div id="sku"></div>
+          </div>
+          <div class="orderNum-div">
+            <p class="order">
+              ORDER #:
+              <input
+                type="text"
+                id="orderNum-input"
+                placeholder="Order number"
+              />
+            </p>
+            <div id="orderNum"></div>
+          </div>
+        </div>
+        <div class="section2">
+          <p class="software">
+            SW VERSION:
+            <input type="text" id="sw-version" placeholder="software version" />
+          </p>
+          <p class="description"></p>
+            DESCRIPTION:
+            <input type="text" id="description" placeholder="Description" />
+          </p>
+        </div>
+        <div class="section3" >
+            <div class="caseQty-div">
+                <p class="caseQty">
+                  CASE QTY:
+                  <input type="text" id="qty-input" placeholder="Quantity" />
+                </p>
+                <div id="qty" ></div>                
+              </div>
+              <div class="caseId-div">
+                <p class="case">
+                  CASE ID:
+                  <input type="text" id="caseId-input" placeholder="Case ID" />
+                </p>
+                <div id="caseId" ></div>
+        </div>
+      </div>      
+    </div>
+    <div class="IMEI" ></div>
+        <div class="form" >
+            <form id="imei-form" ></form>
+            <button onclick="submitImeiNums()" >Generate Barcode</button>
+        </div>
+      </div>
+      <div id="error"></div>
+  </body>
+</html>
