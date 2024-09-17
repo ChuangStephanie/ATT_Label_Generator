@@ -135,8 +135,8 @@ for (let i = 0; i < 10; i++) {
     }
   
     if (qty) {
-      const qtyLabel = document.querySelector(".carton");
-      qtyLabel.firstChild.textContent = `CARTON QTY: ${qty}`;
+      const qtyLabel = document.querySelector(".caseQty");
+      qtyLabel.firstChild.textContent = `CASE QTY: ${qty}`;
       const qtyContainer = barcodeElements.qty;
       qtyContainer.innerHTML = "";
       const barcodeSvg = document.createElementNS(
@@ -173,4 +173,43 @@ for (let i = 0; i < 10; i++) {
         height: 75
       });
     }
+  }
+
+  function hideHeaderInputs() {
+    const headerInputs = document.querySelectorAll(
+      "#sku-input, #orderNum-input, #qty-input, #caseId-input, #description, #sw-version"
+    );
+    console.log(headerInputs);
+    headerInputs.forEach((input) => {
+      input.style.display = "none";
+    });
+  }
+
+  function generatePdf() {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF({
+      orientation: "portrait",
+      unit: "px",
+      format: [500, 750],
+    });
+  
+    document
+      .querySelectorAll(
+        "#sku-input, #orderNum-input, #qty-input, #caseId-input, #description, #sw-version"
+      )
+      .forEach((input) => input.classList.add("pdf-hide"));
+  
+    // Target the main container to convert it to PDF
+    const mainContainer = document.querySelector(".main-container");
+  
+    html2canvas(mainContainer, { scale: 2 }).then((canvas) => {
+      const imgData = canvas.toDataURL("image/png");
+      const imgWidth = 500; // PDF width in px
+      const imgHeight = (canvas.height * imgWidth) / canvas.width;
+  
+      // Add image to PDF
+      doc.addImage(imgData, "PNG", 0, 0, imgWidth, imgHeight);
+  
+      doc.save("labels.pdf");
+    });
   }

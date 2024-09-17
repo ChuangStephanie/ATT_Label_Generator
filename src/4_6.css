@@ -11,6 +11,10 @@
   overflow: auto;
 }
 
+.IMEI {
+  margin-top: 10px;
+}
+
 .imei-form-container {
   display: grid;
   grid-template-columns: repeat(1, 1fr);
@@ -24,7 +28,13 @@
   font-size: 14px;
 }
 
-.imei-container,
+.imei-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-height: 50px;
+}
+
 .form {
   display: flex;
   flex-direction: column;
@@ -32,9 +42,9 @@
 }
 
 svg {
-    width: 100%;
-    height: 100%;
-  }
+  width: 100%;
+  height: 100%;
+}
 
 .header {
   display: flex;
@@ -64,4 +74,8 @@ svg {
 
 input {
   max-width: 100px;
+}
+
+.pdf-hide {
+  display: none;
 }

@@ -38,34 +38,38 @@
             SW VERSION:
             <input type="text" id="sw-version" placeholder="software version" />
           </p>
-          <p class="description"></p>
+          <p class="description">
             DESCRIPTION:
             <input type="text" id="description" placeholder="Description" />
           </p>
         </div>
-        <div class="section3" >
-            <div class="caseQty-div">
-                <p class="caseQty">
-                  CASE QTY:
-                  <input type="text" id="qty-input" placeholder="Quantity" />
-                </p>
-                <div id="qty" ></div>                
-              </div>
-              <div class="caseId-div">
-                <p class="case">
-                  CASE ID:
-                  <input type="text" id="caseId-input" placeholder="Case ID" />
-                </p>
-                <div id="caseId" ></div>
+        <div class="section3">
+          <div class="caseQty-div">
+            <p class="caseQty">
+              CASE QTY:
+              <input type="text" id="qty-input" placeholder="Quantity" />
+            </p>
+            <div id="qty"></div>
+          </div>
+          <div class="caseId-div">
+            <p class="case">
+              CASE ID:
+              <input type="text" id="caseId-input" placeholder="Case ID" />
+            </p>
+            <div id="caseId"></div>
+          </div>
         </div>
-      </div>      
-    </div>
-    <div class="IMEI" ></div>
-        <div class="form" >
-            <form id="imei-form" ></form>
-            <button onclick="submitImeiNums()" >Generate Barcode</button>
+      </div>
+      <div class="IMEI">
+        <div class="form">
+          <form id="imei-form"></form>
+          <button onclick="submitImeiNums()">Generate Barcode</button>
         </div>
       </div>
       <div id="error"></div>
+    </div>
+    <div class="back">
+      <button onclick="window.location.href='index.html'">Back</button>
+    </div>
   </body>
 </html>
