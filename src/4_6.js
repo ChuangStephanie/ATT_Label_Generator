@@ -60,7 +60,7 @@ for (let i = 0; i < 10; i++) {
       JsBarcode(barcodeSvg, imei, {
         format: "CODE128",
         displayValue: true,
-        width: 2,
+        width: 1.5,
         height: 24,
       });
     });
@@ -149,7 +149,7 @@ for (let i = 0; i < 10; i++) {
       JsBarcode(barcodeSvg, qty, {
         format: "CODE128",
         displayValue: false,
-        width: 2,
+        width: .5,
         height: 24,
       });
     }
