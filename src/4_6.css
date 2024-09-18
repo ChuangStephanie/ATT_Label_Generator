@@ -9,6 +9,7 @@
   border: 3px;
   box-sizing: border-box;
   overflow: auto;
+  page-break-inside: avoid;
 }
 
 .IMEI {
