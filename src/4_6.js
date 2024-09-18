@@ -86,7 +86,7 @@ for (let i = 0; i < 10; i++) {
   
     if (description) {
       const descriptionHeader = document.querySelector(".description");
-      descriptionHeader.firstChild.textContent = `Description: ${description}`;
+      descriptionHeader.firstChild.textContent = `Device Model #: ${description}`;
     }
   
     if (swVersion) {
