@@ -169,7 +169,7 @@ for (let i = 0; i < 10; i++) {
       JsBarcode(barcodeSvg, caseId, {
         format: "CODE128",
         displayValue: false,
-        width: 2,
+        width: 3,
         height: 75
       });
     }
@@ -190,7 +190,7 @@ for (let i = 0; i < 10; i++) {
     console.log(element.offsetWidth, element.offsetHeight)
 
     const opt = {
-      margin: 1, 
+      margin: 2, 
       filename: "labels.pdf",
       image: { type: "jpeg", quality: 0.98 },
       html2canvas: { scale: 4 },

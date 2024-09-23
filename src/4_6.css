@@ -49,15 +49,22 @@ svg {
 
 .header {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   text-align: center;
-  gap: 20px;
+}
+
+.section1, .section3 {
+  margin-top: 0;
+  margin-bottom: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
 }
 
 #sku,
 #orderNum {
   width: 100%;
-  max-width: 200px;
+  max-width: 200x;
   height: 50px;
 }
 
@@ -69,7 +76,7 @@ svg {
 
 #caseId {
   width: 100%;
-  max-width: 200px;
+  max-width: 300px;
   height: 75px;
 }
 
