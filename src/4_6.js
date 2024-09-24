@@ -169,7 +169,7 @@ for (let i = 0; i < 10; i++) {
       JsBarcode(barcodeSvg, caseId, {
         format: "CODE128",
         displayValue: false,
-        width: 3,
+        width: 2,
         height: 75
       });
     }
