@@ -193,7 +193,7 @@ for (let i = 0; i < 10; i++) {
       margin: 2, 
       filename: "labels.pdf",
       image: { type: "jpeg", quality: 0.98 },
-      html2canvas: { scale: 4 },
+      html2canvas: { scale: 8 },
       jsPDF: { unit: "px", format: [500, 756], orientation: "portrait" },
     };
 
