@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2.25 x 1.25 Label</title>
+    <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.5/dist/JsBarcode.all.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
+    <style>
+      /* Ensure the label is 2.25in x 1.25in */
+      .label {
+        width: 2.25in;
+        height: 1.25in;
+        border: 1px solid #000;
+        padding: 0px;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+        font-size: 12px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+      }
+
+      /* Input styling */
+      .label input[type="text"] {
+        width: 100%;
+        margin: 5px 0;
+        padding: 2px;
+        box-sizing: border-box;
+        font-size: 12px;
+      }
+
+      /* Hidden text fields after display */
+      .label-text,
+      #barcodeDisplay {
+        display: none;
+      }
+
+      /* Styling for enlarged and centered elements */
+      .centered-text {
+        font-size: 14px;
+        font-weight: bold;
+        margin-top: 10px;
+      }
+
+      .centered-barcode {
+        margin-top: 5px;
+        transform: scale(1.5); /* Enlarges the barcode */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="label" id="label">
+      <div id="descriptionField">
+        <label for="description">Description:</label>
+        <input type="text" id="description" placeholder="Enter description" />
+      </div>
+
+      <div id="barcodeField">
+        <label for="barcode">Barcode:</label>
+        <input type="text" id="barcode" placeholder="Enter barcode" />
+      </div>
+
+      <!-- Display area for description text and barcode -->
+      <div id="descriptionText" class="label-text"></div>
+      <svg id="barcodeDisplay"></svg>
+    </div>
+
+    <!-- Button to generate PDF -->
+    <button onclick="prepareLabel()">Generate PDF</button>
+
+    <script>
+      // Function to generate barcode from input
+      document.getElementById("barcode").addEventListener("input", function () {
+        const barcodeValue = this.value;
+        if (barcodeValue) {
+          JsBarcode("#barcodeDisplay", barcodeValue, {
+            format: "CODE128",
+            width: 2,
+            height: 75,
+            displayValue: true,
+          });
+        } else {
+          document.getElementById("barcodeDisplay").innerHTML = "";
+        }
+      });
+
+      // Function to prepare label for PDF
+      function prepareLabel() {
+        // Get input values
+        const description = document.getElementById("description").value;
+        const barcode = document.getElementById("barcode").value;
+
+        // Display input values as text
+        const descriptionText = document.getElementById("descriptionText");
+        descriptionText.innerText = description;
+        descriptionText.classList.add("centered-text"); // Adds centering and enlarging styles
+        descriptionText.style.display = "block";
+
+        // Show the generated barcode, hide the input fields, and enlarge the barcode
+        if (barcode) {
+          document
+            .getElementById("barcodeDisplay")
+            .classList.add("centered-barcode");
+          document.getElementById("barcodeDisplay").style.display = "block";
+          document.getElementById("barcodeField").style.display = "none";
+        }
+        document.getElementById("descriptionField").style.display = "none";
+
+        // Generate PDF
+        generatePDF(barcode);
+      }
+
+      // Function to generate PDF
+      function generatePDF(barcode) {
+        const element = document.getElementById("label");
+        const filename = barcode ? `${barcode}.pdf` : "label.pdf"; // Use barcode as filename if available
+
+        html2pdf()
+          .from(element)
+          .set({
+            margin: 0,
+            filename: filename,
+            image: { type: "jpeg", quality: 0.98 },
+            html2canvas: { scale: 8 },
+            jsPDF: {
+              unit: "in",
+              format: [2.25, 1.25],
+              orientation: "landscape",
+            }, // Ensure correct format dimensions
+          })
+          .toPdf()
+          .get("pdf")
+          .then((pdf) => {
+            pdf.setPage(1);
+            pdf.setProperties({
+              title: "Label",
+              subject: "ZP 450 Landscape Label",
+              orientation: "landscape",
+            });
+            pdf.save(filename); // Save with dynamic filename
+          });
+      }
+    </script>
+  </body>
+</html>
