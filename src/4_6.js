@@ -86,7 +86,7 @@ for (let i = 0; i < 10; i++) {
   
     if (description) {
       const descriptionHeader = document.querySelector(".description");
-      descriptionHeader.firstChild.textContent = `Device Model #: ${description}`;
+      descriptionHeader.firstChild.textContent = `Description: ${description}`;
     }
   
     if (swVersion) {
@@ -96,7 +96,7 @@ for (let i = 0; i < 10; i++) {
   
     if (sku) {
       const skuLabel = document.querySelector(".skuNum");
-      skuLabel.firstChild.textContent = `AT&T SKU: ${sku}`;
+      skuLabel.firstChild.textContent = `Cricket SKU: ${sku}`;
       const skuContainer = barcodeElements.sku;
       skuContainer.innerHTML = "";
       const barcodeSvg = document.createElementNS(
@@ -149,7 +149,7 @@ for (let i = 0; i < 10; i++) {
       JsBarcode(barcodeSvg, qty, {
         format: "CODE128",
         displayValue: false,
-        width: .5,
+        width: 1,
         height: 24,
       });
     }

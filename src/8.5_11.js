@@ -96,7 +96,7 @@ function updateLabels() {
 
   if (sku) {
     const skuLabel = document.querySelector(".skuNum");
-    skuLabel.firstChild.textContent = `AT&T SKU: ${sku}`;
+    skuLabel.firstChild.textContent = `Cricket SKU: ${sku}`;
     const skuContainer = barcodeElements.sku;
     skuContainer.innerHTML = "";
     const barcodeSvg = document.createElementNS(
