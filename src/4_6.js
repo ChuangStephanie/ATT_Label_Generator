@@ -71,6 +71,7 @@ for (let i = 0; i < 10; i++) {
 
   function updateLabels() {
     const sku = document.getElementById("sku-input").value.trim();
+    const skuType = document.getElementById("sku-type").value;
     const orderNum = document.getElementById("orderNum-input").value.trim();
     const qty = document.getElementById("qty-input").value.trim();
     const caseId = document.getElementById("caseId-input").value.trim();
@@ -98,7 +99,7 @@ for (let i = 0; i < 10; i++) {
   
     if (sku) {
       const skuLabel = document.querySelector(".skuNum");
-      skuLabel.firstChild.textContent = `Cricket SKU: ${sku}`;
+      skuLabel.firstChild.textContent = `${skuType}: ${sku}`;
       const skuContainer = barcodeElements.sku;
       skuContainer.innerHTML = "";
       const barcodeSvg = document.createElementNS(
@@ -199,7 +200,7 @@ for (let i = 0; i < 10; i++) {
 
   function hideHeaderInputs() {
     const headerInputs = document.querySelectorAll(
-      "#sku-input, #orderNum-input, #qty-input, #caseId-input, #cartonId-input, #description, #sw-version"
+      "#sku-input, #sku-type, #orderNum-input, #qty-input, #caseId-input, #cartonId-input, #description, #sw-version"
     );
     console.log(headerInputs);
     headerInputs.forEach((input) => {
