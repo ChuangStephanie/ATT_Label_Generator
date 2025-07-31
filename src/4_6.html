@@ -66,8 +66,19 @@
       <div class="IMEI">
         <div class="form">
           <form id="imei-form"></form>
-          <button onclick="submitImeiNums()">Generate Barcode</button>
         </div>
+      </div>
+      <div class="carton-id">
+        <div class="carton-container">
+          <p class="carton">
+            CARTON ID:
+            <input type="text" id="cartonId-input" placeholder="Carton ID" />
+          </p>
+          <div id="cartonId"></div>
+        </div>
+      </div>
+      <div class="generate-button">
+        <button onclick="submitImeiNums()">Generate Barcode</button>
       </div>
       <div id="error"></div>
     </div>

@@ -74,6 +74,7 @@ for (let i = 0; i < 10; i++) {
     const orderNum = document.getElementById("orderNum-input").value.trim();
     const qty = document.getElementById("qty-input").value.trim();
     const caseId = document.getElementById("caseId-input").value.trim();
+    const cartonId = document.getElementById("cartonId-input").value.trim();
     const description = document.getElementById("description").value.trim();
     const swVersion = document.getElementById("sw-version").value.trim();
   
@@ -82,6 +83,7 @@ for (let i = 0; i < 10; i++) {
       orderNum: document.getElementById("orderNum"),
       qty: document.getElementById("qty"),
       caseId: document.getElementById("caseId"),
+      cartonId: document.getElementById("cartonId"),
     };
   
     if (description) {
@@ -173,16 +175,42 @@ for (let i = 0; i < 10; i++) {
         height: 75
       });
     }
+
+    if (cartonId) {
+      const cartonIdLabel = document.querySelector(".carton");
+      cartonIdLabel.firstChild.textContent = `CARTON ID: ${cartonId}`;
+      const cartonIdContainer = barcodeElements.cartonId;
+      cartonIdContainer.innerHTML = "";
+      const barcodeSvg = document.createElementNS(
+        "http://www.w3.org/2000/svg",
+        "svg"
+      );
+  
+      cartonIdContainer.appendChild(barcodeSvg);
+  
+      JsBarcode(barcodeSvg, cartonId, {
+        format: "CODE128",
+        displayValue: false,
+        width: 1.5,
+        height: 24
+      });
+    }
   }
 
   function hideHeaderInputs() {
     const headerInputs = document.querySelectorAll(
-      "#sku-input, #orderNum-input, #qty-input, #caseId-input, #description, #sw-version"
+      "#sku-input, #orderNum-input, #qty-input, #caseId-input, #cartonId-input, #description, #sw-version"
     );
     console.log(headerInputs);
     headerInputs.forEach((input) => {
       input.style.display = "none";
     });
+    
+    // Hide the generate button after barcode generation
+    const generateButton = document.querySelector(".generate-button");
+    if (generateButton) {
+      generateButton.style.display = "none";
+    }
   }
 
   function generatePdf() {
