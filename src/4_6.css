@@ -116,11 +116,12 @@ svg {
   transform: translateY(-50%) rotate(90deg) translateX(-30px);
   transform-origin: left center;
   text-align: center;
-  width: 300px;
+  width: 400px;
   height: 60px;
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 1;
 }
 
 .carton-container {
