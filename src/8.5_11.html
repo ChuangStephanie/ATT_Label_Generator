@@ -19,14 +19,17 @@
     <div class="main-container">
       <div class="header">
         <div class="section1">
-          <div class="sku">
-            <p class="skuNum">
-              Cricket SKU:
-              <input type="text" id="sku-input" placeholder="SKU number" />
-            </p>
-            <div id="sku" ></div>
-            <!-- <p class="barcode"  style="font-size: 0.5in"></p> -->
-          </div>
+                     <div class="sku">
+             <p class="skuNum">
+               <select id="sku-type" style="margin-right: 10px;">
+                 <option value="CRICKET SKU">CRICKET SKU</option>
+                 <option value="ATT SKU">ATT SKU</option>
+               </select>
+               <input type="text" id="sku-input" placeholder="SKU number" />
+             </p>
+             <div id="sku" ></div>
+             <!-- <p class="barcode"  style="font-size: 0.5in"></p> -->
+           </div>
           <div class="order-num">
             <p class="order">
               ORDER #:
@@ -52,11 +55,16 @@
             SW VERSION:
             <input type="text" id="sw-version" placeholder="software version" />
           </p>
+          <p class="carton-id">
+            CARTON ID:
+            <input type="text" id="cartonId-input" placeholder="Carton ID" />
+          </p>
+          <div id="cartonId"></div>
         </div>
         <div class="section3">
           <div class="case-qty">
             <p class="carton">
-              CASE QTY:
+              CARTON QTY:
               <input type="text" id="qty-input" placeholder="Quantity" />
             </p>
             <div id="qty" ></div>

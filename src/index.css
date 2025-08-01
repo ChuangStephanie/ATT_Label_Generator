@@ -54,6 +54,18 @@ svg {
   text-align: center;
 }
 
+.section1 {
+  margin-left: 20px;
+}
+.section3 {
+  margin-right: 20px;
+}
+
+.device {
+  text-align: center;
+  margin-left: -15px;
+}
+
 #sku, #orderNum {
   width: 100%;
   max-width: 200px;
@@ -70,6 +82,18 @@ svg {
   width: 100%;
   max-width: 200px;
   height: 75px;
+}
+
+.carton-id {
+  margin-top: 10px;
+  margin-bottom: 0px;
+}
+
+#cartonId {
+  margin: 0px;
+  width: 100%;
+  max-width: 200px;
+  height: 50px;
 }
 
 

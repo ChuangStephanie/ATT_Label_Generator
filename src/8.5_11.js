@@ -71,9 +71,11 @@ function generateBarcodes(imeiNums) {
 
 function updateLabels() {
   const sku = document.getElementById("sku-input").value.trim();
+  const skuType = document.getElementById("sku-type").value;
   const orderNum = document.getElementById("orderNum-input").value.trim();
   const qty = document.getElementById("qty-input").value.trim();
   const caseId = document.getElementById("caseId-input").value.trim();
+  const cartonId = document.getElementById("cartonId-input").value.trim();
   const deviceModel = document.getElementById("device-model").value.trim();
   const swVersion = document.getElementById("sw-version").value.trim();
 
@@ -82,6 +84,7 @@ function updateLabels() {
     orderNum: document.getElementById("orderNum"),
     qty: document.getElementById("qty"),
     caseId: document.getElementById("caseId"),
+    cartonId: document.getElementById("cartonId"),
   };
 
   if (deviceModel) {
@@ -96,7 +99,7 @@ function updateLabels() {
 
   if (sku) {
     const skuLabel = document.querySelector(".skuNum");
-    skuLabel.firstChild.textContent = `Cricket SKU: ${sku}`;
+    skuLabel.firstChild.textContent = `${skuType}: ${sku}`;
     const skuContainer = barcodeElements.sku;
     skuContainer.innerHTML = "";
     const barcodeSvg = document.createElementNS(
@@ -173,11 +176,31 @@ function updateLabels() {
       height: 75
     });
   }
+
+  if (cartonId) {
+    const cartonIdLabel = document.querySelector(".carton-id");
+    cartonIdLabel.firstChild.textContent = `CARTON ID: ${cartonId}`;
+    const cartonIdContainer = barcodeElements.cartonId;
+    cartonIdContainer.innerHTML = "";
+    const barcodeSvg = document.createElementNS(
+      "http://www.w3.org/2000/svg",
+      "svg"
+    );
+
+    cartonIdContainer.appendChild(barcodeSvg);
+
+    JsBarcode(barcodeSvg, cartonId, {
+      format: "CODE128",
+      displayValue: false,
+      width: 2,
+      height: 24
+    });
+  }
 }
 
 function hideHeaderInputs() {
   const headerInputs = document.querySelectorAll(
-    "#sku-input, #orderNum-input, #qty-input, #caseId-input, #device-model, #sw-version"
+    "#sku-input, #sku-type, #orderNum-input, #qty-input, #caseId-input, #cartonId-input, #device-model, #sw-version"
   );
   headerInputs.forEach((input) => {
     input.style.display = "none";
@@ -194,7 +217,7 @@ function generatePdf() {
 
   document
     .querySelectorAll(
-      "#sku-input, #orderNum-input, #qty-input, #caseId-input, #device-model, #sw-version"
+      "#sku-input, #sku-type, #orderNum-input, #qty-input, #caseId-input, #cartonId-input, #device-model, #sw-version"
     )
     .forEach((input) => input.classList.add("pdf-hide"));
 
