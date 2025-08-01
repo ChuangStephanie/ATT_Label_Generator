@@ -192,7 +192,7 @@ for (let i = 0; i < 10; i++) {
       JsBarcode(barcodeSvg, cartonId, {
         format: "CODE128",
         displayValue: false,
-        width: 1.5,
+        width: 5,
         height: 24
       });
     }
