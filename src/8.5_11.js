@@ -89,7 +89,7 @@ function updateLabels() {
 
   if (deviceModel) {
     const deviceHeader = document.querySelector(".device");
-    deviceHeader.firstChild.textContent = `Device Model #: ${deviceModel}`;
+    deviceHeader.firstChild.textContent = `Description: ${deviceModel}`;
   }
 
   if (swVersion) {
